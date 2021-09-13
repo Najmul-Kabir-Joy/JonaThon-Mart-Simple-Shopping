@@ -5,41 +5,70 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FakeStore</title>
+  <title>JonaThon Mart</title>
   <link rel="stylesheet" href="./css/style.css" />
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
-
+  <!-- 
+    Latest compiled and minified CSS 
+    Changed the version from 3.3.7 to 3.4.1
+  -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- FONTAWESOME -->
+  <script src="https://kit.fontawesome.com/ede214bfac.js" crossorigin="anonymous"></script>
   <!-- google Montserrat  font  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- google Lobster  font  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header></header>
+  <header>
+    <!--NAVBAR FOR JONATHON MART-->
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand logo" href="#">
+            JonaThon Mart</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Fashion</a></li>
+            <li><a href="#">Store Locations</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </header>
+  <!--THE MAIN BODY OF JONATHON MART-->
   <main class="main">
-    <div class="search-field">
-      <div class="search-box">
-        <input id="input-field" class="search-field" type="text" />
-        <button type="button" class="btn btn-primary search-button" data-toggle="button" aria-pressed="false"
-          autocomplete="off" id="search-btn" onclick="loadProducts()">
-          Search
-        </button>
-      </div>
-    </div>
+    <!--SEARCH SECTION-->
+    <form class="input-container" style="margin:auto;max-width:300px">
+      <input type="text" id="input-field" placeholder="Search...">
+      <button type="button" id="search-btn" onclick="loadProducts()"><i class="fa fa-search"></i></button>
+    </form>
+    <small class="products_list_title">Our Products</small>
+    <!--SHOWING ALL PRODUCTS AND THE CART-->
     <div class="row">
       <div class="col-md-9 col-lg-9 col-sm-7">
         <div id="all-products" class="">
-          <h1></h1>
         </div>
       </div>
+      <!--THE CART-->
       <div class="col-md-3 col-lg-3 col-sm-5 cart-main">
         <div class="cart" id="my-cart">
-          <table class="table">
+          <!--TABLE TO VIEW THE CART ITEMS-->
+          <table class="table table-condensed">
             <thead>
-              <h1>My-Cart</h1>
+              <h1 class="text-center">My-Cart</h1>
               <tr>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -50,7 +79,7 @@
             <tbody>
               <tr>
                 <th>Total Added-Products:</th>
-                <td>$ <span id="total-Products">0</span></td>
+                <td><span id="total-Products">0</span></td>
                 <td></td>
                 <td></td>
               </tr>
@@ -80,13 +109,51 @@
             </tbody>
           </table>
           <div class="parces text-center">
-            <button class="btn btn-primary text-center">Buy Now</button>
+            <button class="btn btn-success text-center" data-toggle="modal" data-target="#myModal">Buy
+              Now</button>
           </div>
         </div>
       </div>
     </div>
+    <!--MODAL CODE FOR BUY NOW BUTTON-->
+    <!-- Trigger the modal with a button -->
+    <!-- Modal -->
+    <div id="modal_container"></div>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Please give your details</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="usr">Name:</label>
+                <input type="text" class="form-control" id="usr" placeholder="Please input your name">
+              </div>
+              <div class="form-group">
+                <label for="tel">Number:</label>
+                <input type="tel" class="form-control" id="tel" placeholder="Please enter your number">
+              </div>
+            </form>
+            <p class="text-warning">Our customer service will contact you soon. Thank you.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </main>
-  <footer></footer>
+  <footer>
+
+  </footer>
 
   <!-- add javascript  file  -->
   <script src="./js/app.js"></script>
